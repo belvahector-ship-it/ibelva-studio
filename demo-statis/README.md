@@ -7,7 +7,7 @@ homepage marketing iBelva Studio sendiri.
 
 ## Sebelum Go-Live
 
-- [ ] Ganti nomor WhatsApp di `index.html` (cari `62XXXXXXXXXXX`) dengan nomor asli.
+- [x] Ganti nomor WhatsApp di `index.html` dengan nomor asli.
 - [ ] Ganti/isi bagian portofolio dengan screenshot project klien asli (setelah ada).
 - [ ] Cek ulang harga paket kalau berubah.
 
@@ -15,15 +15,19 @@ homepage marketing iBelva Studio sendiri.
 
 Buka `index.html` langsung di browser — tidak perlu server.
 
-## Deploy Gratis ke GitHub Pages
+## Deploy — Sudah Otomatis
 
-1. Push repo ini ke GitHub (lihat root `README.md`).
-2. Di GitHub: **Settings → Pages → Source** pilih branch `main`, folder `/demo-statis` (atau `/` kalau
-   repo ini dikhususkan untuk 1 demo saja, root `/` kalau di-deploy sendiri sebagai repo terpisah).
-   > Catatan: GitHub Pages hanya bisa serve dari root atau `/docs` sebuah repo, **bukan sembarang subfolder**.
-   > Kalau mau demo ini live di URL sendiri (`ibelva-studio.github.io`), cara termudah: buat repo GitHub
-   > terpisah khusus untuk demo ini, atau pakai GitHub Actions untuk deploy subfolder ke branch `gh-pages`.
-3. Tunggu beberapa menit, URL Pages akan muncul di halaman Settings → Pages.
+Repo ini pakai satu GitHub Actions workflow ([`.github/workflows/deploy-pages.yml`](../.github/workflows/deploy-pages.yml))
+yang deploy **ketiga demo sekaligus** ke satu GitHub Pages site tiap kali push ke `main`:
+
+- `/` → redirect ke `demo-statis/` (halaman ini)
+- `/demo-statis/`
+- `/demo-semi-dinamis/`
+- `/demo-fullstack/` (di-build otomatis lewat Vite sebelum deploy)
+
+Aktifkan sekali di GitHub: **Settings → Pages → Build and deployment → Source → GitHub Actions**.
+Setelah itu tiap push ke `main` otomatis re-deploy. URL live muncul di tab **Actions** (run terakhir)
+atau di Settings → Pages.
 
 ## Custom Domain (opsional)
 

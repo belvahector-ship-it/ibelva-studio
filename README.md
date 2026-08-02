@@ -49,11 +49,17 @@ extend: [`docs/design-tokens.md`](docs/design-tokens.md). Dua demo klien (`demo-
 
 ## Stack per Demo
 
-| Demo | Stack | Deploy gratis |
+| Demo | Stack | Deploy |
 |---|---|---|
-| Statis | HTML + Tailwind CDN + AOS | GitHub Pages |
-| Semi Dinamis | HTML + Tailwind CDN + Google Sheet (CSV publish) + Google Form | GitHub Pages |
-| Full Stack | Vite + vanilla JS + Supabase (Postgres, Auth, RLS) | Vercel (frontend) + Supabase (backend gratis) |
+| Statis | HTML + Tailwind CDN + AOS | GitHub Pages (auto) |
+| Semi Dinamis | HTML + Tailwind CDN + Google Sheet (CSV publish) + Google Form | GitHub Pages (auto) |
+| Full Stack | Vite + vanilla JS + Supabase (Postgres, Auth, RLS) | GitHub Pages (auto, di-build via Actions) — backend tetap Supabase |
+
+## Deploy
+
+Satu GitHub Actions workflow ([`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml))
+deploy ketiga demo sekaligus ke GitHub Pages tiap push ke `main`. Aktifkan sekali di
+**Settings → Pages → Source → GitHub Actions**. Detail: [`demo-statis/README.md`](demo-statis/README.md#deploy--sudah-otomatis).
 
 ## Status
 
