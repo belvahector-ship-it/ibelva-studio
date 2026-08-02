@@ -39,6 +39,14 @@ Google Form/Sheet, CDN (Tailwind, AOS, GSAP).
    ke `components/` di repo ini. Ini "sistem katalog organik" — katalog makin gemuk seiring makin banyak project.
    Detail: [`docs/katalog-organik.md`](docs/katalog-organik.md).
 
+## Tema & Brand
+
+`components/`, `templates/`, dan `demo-statis/` pakai tema resmi iBelva Studio (navy `slate-900` +
+accent `sky-700`, font Plus Jakarta Sans) — di-generate dengan skill
+[ui-ux-pro-max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill). Detail lengkap palet & cara
+extend: [`docs/design-tokens.md`](docs/design-tokens.md). Dua demo klien (`demo-semi-dinamis`,
+`demo-fullstack`) sengaja punya tema sendiri-sendiri — lihat alasannya di file yang sama.
+
 ## Stack per Demo
 
 | Demo | Stack | Deploy gratis |
@@ -54,5 +62,6 @@ Google Form/Sheet, CDN (Tailwind, AOS, GSAP).
 - [x] Demo Statis (iBelva Studio company profile)
 - [x] Demo Semi Dinamis (katalog + Google Form/Sheet)
 - [x] Demo Full Stack (Supabase + admin panel)
+- [x] Tema/brand resmi (navy + sky, Plus Jakarta Sans) diterapkan ke components/templates/demo-statis
 - [ ] Ganti data/kontak placeholder dengan data asli sebelum dipromosikan ke klien
 - [ ] Isi Supabase project asli untuk demo-fullstack (lihat `demo-fullstack/README.md`)

@@ -20,6 +20,11 @@ classnya tetap valid tinggal pindah ke JSX/template engine yang dipakai.
 | `forms.html` | Form kontak, form order sederhana |
 | `footers.html` | Footer simple, footer dengan sitemap + sosial media |
 
+## Tema
+
+Semua komponen di sini sudah pakai tema resmi iBelva Studio (navy `slate-900` + accent `sky-700`,
+font Plus Jakarta Sans). Detail & alasan pemilihan: [`../docs/design-tokens.md`](../docs/design-tokens.md).
+
 ## Sumber Inspirasi (referensi gratis, bukan hasil scrape)
 
 Komponen di sini ditulis ulang manual mengikuti pola umum dari library open-source berikut
