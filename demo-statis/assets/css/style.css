@@ -1,4 +1,44 @@
-/* Custom overrides di luar Tailwind utility, kalau perlu */
 html {
   scroll-behavior: smooth;
+}
+
+/* Aurora glow — dua blob besar yang drift pelan di belakang section gelap.
+   Ini yang bikin hero terasa "hidup" tanpa perlu gambar/video sama sekali. */
+@keyframes aurora-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-5%, 4%, 0) scale(1.15);
+  }
+}
+
+.aurora {
+  animation: aurora-drift 16s ease-in-out infinite;
+  will-change: transform;
+}
+
+.aurora--delayed {
+  animation-delay: -8s;
+}
+
+/* Grid pattern halus di belakang hero, di-fade ke arah tepi pakai mask
+   supaya tidak terlihat seperti tabel yang terpotong. */
+.grid-pattern {
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 56px 56px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 35%, #000 35%, transparent 78%);
+  mask-image: radial-gradient(ellipse 75% 60% at 50% 35%, #000 35%, transparent 78%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .aurora {
+    animation: none;
+  }
 }

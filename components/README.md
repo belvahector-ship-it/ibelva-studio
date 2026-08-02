@@ -19,6 +19,11 @@ classnya tetap valid tinggal pindah ke JSX/template engine yang dipakai.
 | `buttons.html` | Primary, secondary, outline, ghost, dengan/tanpa ikon |
 | `forms.html` | Form kontak, form order sederhana |
 | `footers.html` | Footer simple, footer dengan sitemap + sosial media |
+| `mockups.html` | **Mockup browser, thumbnail portofolio, dan mockup HP — digambar 100% pakai CSS.** Pakai ini sebagai ganti kotak abu-abu `[ foto produk ]` saat klien belum punya screenshot asli. |
+
+> Hero gelap + aurora glow (gaya utama iBelva Studio sekarang) ada di
+> [`../templates/landing-page-template.html`](../templates/landing-page-template.html) — di sana lengkap
+> dengan CSS animasinya, jadi tinggal copy satu file.
 
 ## Tema
 

@@ -6,10 +6,24 @@ ke `components/`, `templates/`, dan `demo-statis/` (situs iBelva Studio sendiri)
 
 ## Kenapa Style Ini
 
-- **Pattern:** Feature-Rich Showcase + Trust (Hero → Features → CTA)
-- **Style:** Trust & Authority — cocok untuk positioning "profesional & terpercaya", bukan "murahan"
-  tapi juga bukan mewah/eksklusif. Anti-pattern yang dihindari: desain playful, kredensial tersembunyi,
-  gradient ungu-pink ala AI-generic.
+- **Pattern:** Feature-Rich Showcase + Trust (Hero → Features → Harga → Portofolio → CTA)
+- **Style:** Trust & Authority **+ dark hero (Aurora UI) + Bento Grid**.
+
+Versi pertama tema ini murni "Trust & Authority" dengan background putih polos — hasilnya terlalu
+datar dan generic untuk usaha yang justru jualan jasa desain. Direvisi setelah riset tren 2026:
+bento grid (Apple/Linear/Vercel) dan dark-mode-first sekarang jadi bahasa visual standar untuk
+agensi & SaaS, jadi tiga elemen ini ditambahkan:
+
+| Elemen | Fungsinya |
+|---|---|
+| **Hero gelap + aurora glow** | Kesan premium instan, nol file gambar. Dua blob `blur-[130px]` yang drift 16 detik. |
+| **Grid pattern ber-mask** | Tekstur halus di background gelap supaya tidak terasa kosong. |
+| **Bento grid** | Kartu fitur ukuran beda-beda (2×1, 1×2, 1×1), memecah monotonnya 3 kolom seragam. |
+| **Mockup CSS** | Pengganti kotak abu-abu `[ foto produk ]` — lihat [`../components/mockups.html`](../components/mockups.html). |
+
+Anti-pattern yang dihindari: desain playful, kredensial tersembunyi, gradient ungu-pink ala
+AI-generic, **dan angka sosial palsu** (jumlah klien/rating) selama usahanya masih baru — strip
+statistik di hero sengaja diisi fakta penawaran yang memang benar.
 
 ## Palet Warna
 

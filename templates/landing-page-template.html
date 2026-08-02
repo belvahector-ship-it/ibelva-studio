@@ -4,99 +4,474 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>[BrandName] — [Tagline]</title>
+<meta name="description" content="[Deskripsi 1-2 kalimat untuk hasil pencarian Google]">
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>body { font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif; }</style>
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-</head>
-<body class="bg-white text-slate-900">
+<style>
+  body { font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif; }
+  html { scroll-behavior: smooth; }
 
-<!-- NAVBAR -->
-<nav class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-100">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
-    <a href="#" class="text-lg font-bold text-slate-900">[BrandName]</a>
-    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-      <a href="#layanan" class="hover:text-sky-700">Layanan</a>
-      <a href="#portofolio" class="hover:text-sky-700">Portofolio</a>
-      <a href="#kontak" class="hover:text-sky-700">Kontak</a>
-    </div>
-    <a href="#kontak" class="inline-flex items-center rounded-lg bg-sky-700 px-4 py-2 text-sm font-semibold text-white hover:bg-sky-800">
-      Hubungi Kami
+  /* Aurora glow — dua blob yang drift pelan di belakang section gelap.
+     Ini sumber "mahal"-nya tampilan, dan nol file gambar. */
+  @keyframes aurora-drift {
+    0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+    50%      { transform: translate3d(-5%, 4%, 0) scale(1.15); }
+  }
+  .aurora { animation: aurora-drift 16s ease-in-out infinite; will-change: transform; }
+  .aurora--delayed { animation-delay: -8s; }
+
+  /* Grid pattern halus, di-fade ke tepi pakai mask supaya tidak terlihat terpotong. */
+  .grid-pattern {
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,.07) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 35%, #000 35%, transparent 78%);
+            mask-image: radial-gradient(ellipse 75% 60% at 50% 35%, #000 35%, transparent 78%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .aurora { animation: none; }
+  }
+</style>
+</head>
+<body class="bg-white text-slate-900 antialiased">
+
+<!-- ============================================================
+  NAVBAR — selalu gelap, konsisten di atas hero gelap maupun
+  saat sudah di-scroll ke section terang.
+============================================================= -->
+<nav class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur-xl">
+  <div class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
+    <a href="#" class="flex items-center gap-2.5 text-base font-extrabold tracking-tight text-white">
+      <span class="grid h-8 w-8 place-items-center rounded-lg bg-gradient-to-br from-sky-400 to-indigo-500 text-sm font-black text-slate-950">[XX]</span>
+      [BrandName]
     </a>
+
+    <div class="hidden items-center gap-8 text-sm font-medium text-slate-300 md:flex">
+      <a href="#fitur" class="transition-colors hover:text-white">[Menu 1]</a>
+      <a href="#harga" class="transition-colors hover:text-white">[Menu 2]</a>
+      <a href="#galeri" class="transition-colors hover:text-white">[Menu 3]</a>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <a href="#kontak" class="hidden rounded-lg bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition-colors hover:bg-slate-200 sm:inline-flex">
+        [CTA Nav]
+      </a>
+      <button id="mobile-menu-btn" class="rounded-lg p-2 text-slate-300 transition-colors hover:bg-white/10 hover:text-white md:hidden" aria-label="Buka menu" aria-expanded="false">
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden border-t border-white/10 bg-slate-950 px-4 py-4 md:hidden">
+    <div class="flex flex-col gap-3 text-sm font-medium text-slate-300">
+      <a href="#fitur" class="hover:text-white">[Menu 1]</a>
+      <a href="#harga" class="hover:text-white">[Menu 2]</a>
+      <a href="#galeri" class="hover:text-white">[Menu 3]</a>
+      <a href="#kontak" class="mt-1 rounded-lg bg-white px-4 py-2.5 text-center font-semibold text-slate-950">[CTA Nav]</a>
+    </div>
   </div>
 </nav>
 
-<!-- HERO -->
-<section class="py-24 px-4 text-center bg-gradient-to-b from-slate-50 to-white">
-  <h1 data-aos="fade-up" class="text-4xl sm:text-5xl font-extrabold max-w-2xl mx-auto leading-tight">
-    [Tagline Utama]
-  </h1>
-  <p data-aos="fade-up" data-aos-delay="100" class="mt-4 text-slate-600 max-w-xl mx-auto">
-    [Deskripsi singkat 1-2 kalimat tentang value proposition]
-  </p>
-  <div data-aos="fade-up" data-aos-delay="200" class="mt-8 flex items-center justify-center gap-4">
-    <a href="#kontak" class="rounded-lg bg-sky-700 px-6 py-3 text-white font-semibold hover:bg-sky-800">[CTA Utama]</a>
-    <a href="#layanan" class="rounded-lg border border-slate-300 px-6 py-3 text-slate-700 font-semibold hover:bg-slate-50">[CTA Sekunder]</a>
+<!-- ============================================================
+  HERO GELAP + AURORA + MOCKUP BROWSER (semua CSS, tanpa gambar)
+============================================================= -->
+<header class="relative isolate overflow-hidden bg-slate-950">
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+    <div class="aurora absolute -top-40 left-1/2 h-[440px] w-[860px] -translate-x-1/2 rounded-full bg-sky-500/25 blur-[130px]"></div>
+    <div class="aurora aurora--delayed absolute -right-32 top-24 h-[380px] w-[520px] rounded-full bg-indigo-500/25 blur-[130px]"></div>
+    <div class="absolute inset-0 grid-pattern"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-6xl px-4 pb-20 pt-20 text-center sm:px-6 sm:pt-28">
+    <!-- Badge kecil di atas judul: pakai untuk 1 fakta paling menarik -->
+    <a href="#galeri" data-aos="fade-up"
+       class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-medium text-slate-300 transition-colors hover:border-white/25 hover:text-white">
+      <span class="relative flex h-1.5 w-1.5">
+        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+        <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-sky-400"></span>
+      </span>
+      [Badge — mis. "Promo bulan ini" / "3 demo siap dilihat"]
+    </a>
+
+    <h1 data-aos="fade-up" data-aos-delay="100"
+        class="mx-auto mt-7 max-w-3xl text-4xl font-extrabold leading-[1.08] tracking-tight text-white sm:text-6xl lg:text-7xl">
+      [Judul utama, 4-7 kata]
+      <span class="bg-gradient-to-r from-sky-300 via-sky-400 to-indigo-400 bg-clip-text text-transparent">[bagian yang di-highlight]</span>
+    </h1>
+
+    <p data-aos="fade-up" data-aos-delay="200" class="mx-auto mt-6 max-w-xl text-base leading-relaxed text-slate-400 sm:text-lg">
+      [Sub-judul 1-2 kalimat. Jelaskan manfaat konkret, bukan fitur teknis.]
+    </p>
+
+    <div data-aos="fade-up" data-aos-delay="300" class="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="#harga" class="inline-flex w-full items-center justify-center rounded-xl bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 shadow-lg shadow-sky-500/10 transition-transform hover:scale-[1.02] sm:w-auto">
+        [CTA Utama]
+      </a>
+      <a href="#galeri" class="inline-flex w-full items-center justify-center rounded-xl border border-white/15 bg-white/5 px-6 py-3.5 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/10 sm:w-auto">
+        [CTA Sekunder]
+      </a>
+    </div>
+
+    <!-- MOCKUP BROWSER — ganti isi div di dalamnya sesuai produk klien,
+         atau hapus blok ini kalau sudah punya screenshot asli. -->
+    <div data-aos="zoom-in" data-aos-delay="400" class="relative mx-auto mt-16 max-w-4xl">
+      <div aria-hidden="true" class="absolute -inset-x-6 -inset-y-4 rounded-[2rem] bg-gradient-to-r from-sky-500/20 via-indigo-500/20 to-sky-500/20 blur-2xl"></div>
+
+      <div class="relative overflow-hidden rounded-xl border border-white/10 bg-slate-900 shadow-2xl">
+        <div class="flex items-center gap-2 border-b border-white/10 bg-white/[0.04] px-4 py-3">
+          <span class="h-2.5 w-2.5 rounded-full bg-red-400/60"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-amber-400/60"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-emerald-400/60"></span>
+          <div class="ml-2 flex h-6 max-w-[220px] flex-1 items-center rounded-md bg-white/5 px-2.5 text-[10px] font-medium text-slate-500">[domain-klien.my.id]</div>
+        </div>
+        <div class="bg-white p-4 text-left sm:p-6">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-3.5">
+            <div class="h-2.5 w-20 rounded-full bg-slate-800"></div>
+            <div class="hidden gap-4 sm:flex">
+              <div class="h-2 w-10 rounded-full bg-slate-200"></div>
+              <div class="h-2 w-10 rounded-full bg-slate-200"></div>
+              <div class="h-2 w-10 rounded-full bg-slate-200"></div>
+            </div>
+            <div class="h-6 w-16 rounded-md bg-sky-600"></div>
+          </div>
+          <div class="py-7 text-center">
+            <div class="mx-auto h-3.5 w-3/5 rounded-full bg-slate-800"></div>
+            <div class="mx-auto mt-2.5 h-3.5 w-2/5 rounded-full bg-sky-600/80"></div>
+            <div class="mx-auto mt-4 h-2 w-1/2 rounded-full bg-slate-200"></div>
+            <div class="mt-5 flex justify-center gap-2">
+              <div class="h-7 w-24 rounded-lg bg-slate-900"></div>
+              <div class="h-7 w-20 rounded-lg border border-slate-200"></div>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-3">
+            <div class="rounded-lg border border-slate-100 p-3">
+              <div class="h-6 w-6 rounded-md bg-sky-100"></div>
+              <div class="mt-2.5 h-2 w-full rounded-full bg-slate-200"></div>
+              <div class="mt-1.5 h-2 w-2/3 rounded-full bg-slate-100"></div>
+            </div>
+            <div class="rounded-lg border border-slate-100 p-3">
+              <div class="h-6 w-6 rounded-md bg-indigo-100"></div>
+              <div class="mt-2.5 h-2 w-full rounded-full bg-slate-200"></div>
+              <div class="mt-1.5 h-2 w-2/3 rounded-full bg-slate-100"></div>
+            </div>
+            <div class="rounded-lg border border-slate-100 p-3">
+              <div class="h-6 w-6 rounded-md bg-emerald-100"></div>
+              <div class="mt-2.5 h-2 w-full rounded-full bg-slate-200"></div>
+              <div class="mt-1.5 h-2 w-2/3 rounded-full bg-slate-100"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Strip fakta. JANGAN isi angka sosial palsu (jumlah klien, rating) kalau
+       usahanya baru mulai — pakai fakta penawaran yang memang benar. -->
+  <div class="relative mx-auto max-w-6xl px-4 pb-20 sm:px-6">
+    <dl class="grid grid-cols-2 gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-4">
+      <div class="bg-slate-950 px-4 py-5 text-center">
+        <dt class="text-xs font-medium text-slate-500">[Label 1]</dt>
+        <dd class="mt-1.5 text-lg font-extrabold text-white sm:text-xl">[Nilai 1]</dd>
+      </div>
+      <div class="bg-slate-950 px-4 py-5 text-center">
+        <dt class="text-xs font-medium text-slate-500">[Label 2]</dt>
+        <dd class="mt-1.5 text-lg font-extrabold text-white sm:text-xl">[Nilai 2]</dd>
+      </div>
+      <div class="bg-slate-950 px-4 py-5 text-center">
+        <dt class="text-xs font-medium text-slate-500">[Label 3]</dt>
+        <dd class="mt-1.5 text-lg font-extrabold text-white sm:text-xl">[Nilai 3]</dd>
+      </div>
+      <div class="bg-slate-950 px-4 py-5 text-center">
+        <dt class="text-xs font-medium text-slate-500">[Label 4]</dt>
+        <dd class="mt-1.5 text-lg font-extrabold text-white sm:text-xl">[Nilai 4]</dd>
+      </div>
+    </dl>
+  </div>
+</header>
+
+<!-- ============================================================
+  FITUR — BENTO GRID (kartu ukuran beda-beda, bukan 3 kolom seragam)
+============================================================= -->
+<section id="fitur" class="border-t border-slate-100 bg-white px-4 py-24 sm:px-6">
+  <div class="mx-auto max-w-6xl">
+    <div class="max-w-2xl">
+      <p data-aos="fade-up" class="text-sm font-semibold uppercase tracking-widest text-sky-700">[Eyebrow]</p>
+      <h2 data-aos="fade-up" data-aos-delay="50" class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">[Judul section fitur]</h2>
+    </div>
+
+    <div class="mt-14 grid gap-4 md:grid-cols-3 md:grid-rows-2">
+
+      <!-- Kartu lebar (2 kolom) -->
+      <article data-aos="fade-up" class="rounded-2xl border border-slate-200 bg-slate-50 p-7 md:col-span-2">
+        <div class="grid h-11 w-11 place-items-center rounded-xl bg-slate-900 text-white">
+          <!-- Ikon: ambil dari lucide.dev / heroicons.com, JANGAN pakai emoji -->
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="m9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z" />
+          </svg>
+        </div>
+        <h3 class="mt-5 text-lg font-bold">[Fitur utama]</h3>
+        <p class="mt-2 max-w-md text-sm leading-relaxed text-slate-600">[Penjelasan fitur utama, 1-2 kalimat.]</p>
+
+        <!-- Opsional: bukti visual kecil di dalam kartu -->
+        <div class="mt-6 grid grid-cols-3 gap-3">
+          <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
+            <div class="h-8 bg-slate-900"></div>
+            <div class="space-y-1.5 p-2.5">
+              <div class="h-1.5 w-full rounded-full bg-slate-200"></div>
+              <div class="h-1.5 w-2/3 rounded-full bg-slate-100"></div>
+            </div>
+          </div>
+          <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
+            <div class="h-8 bg-amber-500"></div>
+            <div class="space-y-1.5 p-2.5">
+              <div class="h-1.5 w-full rounded-full bg-slate-200"></div>
+              <div class="h-1.5 w-2/3 rounded-full bg-slate-100"></div>
+            </div>
+          </div>
+          <div class="overflow-hidden rounded-lg border border-slate-200 bg-white">
+            <div class="h-8 bg-emerald-600"></div>
+            <div class="space-y-1.5 p-2.5">
+              <div class="h-1.5 w-full rounded-full bg-slate-200"></div>
+              <div class="h-1.5 w-2/3 rounded-full bg-slate-100"></div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Kartu tinggi (2 baris) — cocok untuk daftar bertingkat/proses -->
+      <article data-aos="fade-up" data-aos-delay="100" class="rounded-2xl border border-slate-900 bg-slate-900 p-7 text-white md:row-span-2">
+        <div class="grid h-11 w-11 place-items-center rounded-xl bg-white/10 text-sky-300">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M22 7 13.5 15.5 8.5 10.5 2 17" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16 7h6v6" />
+          </svg>
+        </div>
+        <h3 class="mt-5 text-lg font-bold">[Judul kartu tinggi]</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-400">[Penjelasan singkat.]</p>
+
+        <ol class="mt-7 space-y-1">
+          <li class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-sky-500 text-xs font-bold text-slate-950">1</span>
+              <span class="my-1 w-px flex-1 bg-white/15"></span>
+            </div>
+            <div class="pb-5">
+              <p class="text-sm font-semibold">[Langkah 1]</p>
+              <p class="mt-0.5 text-xs text-slate-500">[Detail langkah 1]</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-sky-500/70 text-xs font-bold text-slate-950">2</span>
+              <span class="my-1 w-px flex-1 bg-white/15"></span>
+            </div>
+            <div class="pb-5">
+              <p class="text-sm font-semibold">[Langkah 2]</p>
+              <p class="mt-0.5 text-xs text-slate-500">[Detail langkah 2]</p>
+            </div>
+          </li>
+          <li class="flex gap-4">
+            <div class="flex flex-col items-center">
+              <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-sky-500/40 text-xs font-bold text-slate-950">3</span>
+            </div>
+            <div>
+              <p class="text-sm font-semibold">[Langkah 3]</p>
+              <p class="mt-0.5 text-xs text-slate-500">[Detail langkah 3]</p>
+            </div>
+          </li>
+        </ol>
+      </article>
+
+      <!-- Dua kartu kecil -->
+      <article data-aos="fade-up" data-aos-delay="150" class="rounded-2xl border border-slate-200 bg-slate-50 p-7">
+        <div class="grid h-11 w-11 place-items-center rounded-xl bg-slate-900 text-white">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <path stroke-linecap="round" d="M2 12h20" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z" />
+          </svg>
+        </div>
+        <h3 class="mt-5 text-lg font-bold">[Fitur 2]</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">[Penjelasan fitur 2.]</p>
+      </article>
+
+      <article data-aos="fade-up" data-aos-delay="200" class="rounded-2xl border border-slate-200 bg-slate-50 p-7">
+        <div class="grid h-11 w-11 place-items-center rounded-xl bg-slate-900 text-white">
+          <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14H4Z" />
+          </svg>
+        </div>
+        <h3 class="mt-5 text-lg font-bold">[Fitur 3]</h3>
+        <p class="mt-2 text-sm leading-relaxed text-slate-600">[Penjelasan fitur 3.]</p>
+      </article>
+
+    </div>
   </div>
 </section>
 
-<!-- LAYANAN / FITUR -->
-<section id="layanan" class="py-20 px-4">
-  <h2 data-aos="fade-up" class="text-2xl sm:text-3xl font-bold text-center">[Judul Section Layanan]</h2>
-  <div class="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-    <div data-aos="fade-up" data-aos-delay="0" class="rounded-xl bg-white p-6 shadow-sm border border-slate-100">
-      <div class="h-10 w-10 rounded-lg bg-sky-100 flex items-center justify-center text-sky-700 font-bold">1</div>
-      <h3 class="mt-4 font-semibold">[Fitur 1]</h3>
-      <p class="mt-2 text-sm text-slate-600">[Deskripsi fitur 1]</p>
+<!-- ============================================================
+  HARGA — kartu tengah gelap sebagai "anchor" pilihan
+  (hapus section ini kalau klien tidak jualan paket)
+============================================================= -->
+<section id="harga" class="border-t border-slate-100 bg-slate-50 px-4 py-24 sm:px-6">
+  <div class="mx-auto max-w-6xl">
+    <div class="text-center">
+      <p data-aos="fade-up" class="text-sm font-semibold uppercase tracking-widest text-sky-700">[Eyebrow]</p>
+      <h2 data-aos="fade-up" data-aos-delay="50" class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">[Judul section harga]</h2>
+      <p data-aos="fade-up" data-aos-delay="100" class="mx-auto mt-3 max-w-lg text-slate-600">[Kalimat pendukung.]</p>
     </div>
-    <div data-aos="fade-up" data-aos-delay="100" class="rounded-xl bg-white p-6 shadow-sm border border-slate-100">
-      <div class="h-10 w-10 rounded-lg bg-sky-100 flex items-center justify-center text-sky-700 font-bold">2</div>
-      <h3 class="mt-4 font-semibold">[Fitur 2]</h3>
-      <p class="mt-2 text-sm text-slate-600">[Deskripsi fitur 2]</p>
-    </div>
-    <div data-aos="fade-up" data-aos-delay="200" class="rounded-xl bg-white p-6 shadow-sm border border-slate-100">
-      <div class="h-10 w-10 rounded-lg bg-sky-100 flex items-center justify-center text-sky-700 font-bold">3</div>
-      <h3 class="mt-4 font-semibold">[Fitur 3]</h3>
-      <p class="mt-2 text-sm text-slate-600">[Deskripsi fitur 3]</p>
+
+    <div class="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+
+      <div data-aos="fade-up" class="flex flex-col rounded-2xl border border-slate-200 bg-white p-6">
+        <h3 class="font-bold">[Paket 1]</h3>
+        <p class="mt-1 text-xs leading-relaxed text-slate-500">[Cocok untuk siapa]</p>
+        <p class="mt-5 text-3xl font-extrabold tracking-tight">[Rp000]</p>
+        <p class="text-xs text-slate-500">[keterangan harga]</p>
+        <ul class="mt-5 flex-1 space-y-2.5 text-sm text-slate-600">
+          <li class="flex gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>[Benefit 1]</li>
+          <li class="flex gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>[Benefit 2]</li>
+        </ul>
+        <a href="#kontak" class="mt-6 rounded-xl border border-slate-300 py-2.5 text-center text-sm font-semibold transition-colors hover:bg-slate-50">[CTA]</a>
+      </div>
+
+      <div data-aos="fade-up" data-aos-delay="75" class="relative flex flex-col rounded-2xl bg-slate-950 p-6 text-white shadow-2xl shadow-slate-900/20 lg:-my-3 lg:py-9">
+        <span class="absolute -top-3 left-6 rounded-full bg-gradient-to-r from-sky-400 to-indigo-400 px-3 py-1 text-[11px] font-bold text-slate-950">[BADGE]</span>
+        <h3 class="font-bold">[Paket 2]</h3>
+        <p class="mt-1 text-xs leading-relaxed text-slate-400">[Cocok untuk siapa]</p>
+        <p class="mt-5 text-3xl font-extrabold tracking-tight">[Rp000]</p>
+        <p class="text-xs text-slate-400">[keterangan harga]</p>
+        <ul class="mt-5 flex-1 space-y-2.5 text-sm text-slate-300">
+          <li class="flex gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>[Benefit 1]</li>
+          <li class="flex gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sky-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>[Benefit 2]</li>
+        </ul>
+        <a href="#kontak" class="mt-6 rounded-xl bg-white py-2.5 text-center text-sm font-semibold text-slate-950 transition-transform hover:scale-[1.02]">[CTA]</a>
+      </div>
+
+      <div data-aos="fade-up" data-aos-delay="150" class="flex flex-col rounded-2xl border border-slate-200 bg-white p-6">
+        <h3 class="font-bold">[Paket 3]</h3>
+        <p class="mt-1 text-xs leading-relaxed text-slate-500">[Cocok untuk siapa]</p>
+        <p class="mt-5 text-3xl font-extrabold tracking-tight">[Rp000]</p>
+        <p class="text-xs text-slate-500">[keterangan harga]</p>
+        <ul class="mt-5 flex-1 space-y-2.5 text-sm text-slate-600">
+          <li class="flex gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>[Benefit 1]</li>
+          <li class="flex gap-2.5"><svg class="mt-0.5 h-4 w-4 shrink-0 text-sky-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" /></svg>[Benefit 2]</li>
+        </ul>
+        <a href="#kontak" class="mt-6 rounded-xl border border-slate-300 py-2.5 text-center text-sm font-semibold transition-colors hover:bg-slate-50">[CTA]</a>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- PORTOFOLIO -->
-<section id="portofolio" class="py-20 px-4 bg-slate-50">
-  <h2 data-aos="fade-up" class="text-2xl sm:text-3xl font-bold text-center">[Judul Section Portofolio]</h2>
-  <div class="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-    <div data-aos="zoom-in" class="rounded-xl bg-white overflow-hidden shadow-sm border border-slate-100">
-      <div class="aspect-video bg-slate-100 flex items-center justify-center text-slate-400 text-sm">[Screenshot Project 1]</div>
-      <div class="p-4"><p class="font-semibold text-sm">[Nama Project 1]</p></div>
+<!-- ============================================================
+  GALERI / PORTOFOLIO
+============================================================= -->
+<section id="galeri" class="border-t border-slate-100 bg-white px-4 py-24 sm:px-6">
+  <div class="mx-auto max-w-6xl">
+    <div class="text-center">
+      <p data-aos="fade-up" class="text-sm font-semibold uppercase tracking-widest text-sky-700">[Eyebrow]</p>
+      <h2 data-aos="fade-up" data-aos-delay="50" class="mt-3 text-3xl font-extrabold tracking-tight sm:text-4xl">[Judul section galeri]</h2>
     </div>
-    <div data-aos="zoom-in" data-aos-delay="100" class="rounded-xl bg-white overflow-hidden shadow-sm border border-slate-100">
-      <div class="aspect-video bg-slate-100 flex items-center justify-center text-slate-400 text-sm">[Screenshot Project 2]</div>
-      <div class="p-4"><p class="font-semibold text-sm">[Nama Project 2]</p></div>
-    </div>
-    <div data-aos="zoom-in" data-aos-delay="200" class="rounded-xl bg-white overflow-hidden shadow-sm border border-slate-100">
-      <div class="aspect-video bg-slate-100 flex items-center justify-center text-slate-400 text-sm">[Screenshot Project 3]</div>
-      <div class="p-4"><p class="font-semibold text-sm">[Nama Project 3]</p></div>
+
+    <div class="mt-14 grid gap-6 md:grid-cols-3">
+      <!-- Ulangi kartu ini 3x. Ganti blok mockup dengan <img> kalau sudah ada foto asli. -->
+      <a href="#" data-aos="fade-up" class="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all hover:-translate-y-1 hover:shadow-xl">
+        <div class="h-44 overflow-hidden border-b border-slate-100 bg-slate-100 p-3">
+          <div class="h-full overflow-hidden rounded-lg bg-slate-950 shadow-sm">
+            <div class="flex gap-1 border-b border-white/10 px-2.5 py-2">
+              <span class="h-1.5 w-1.5 rounded-full bg-white/25"></span>
+              <span class="h-1.5 w-1.5 rounded-full bg-white/25"></span>
+              <span class="h-1.5 w-1.5 rounded-full bg-white/25"></span>
+            </div>
+            <div class="space-y-2 px-4 py-8 text-center">
+              <div class="mx-auto h-2 w-2/3 rounded-full bg-white/80"></div>
+              <div class="mx-auto h-2 w-1/2 rounded-full bg-sky-400"></div>
+              <div class="mx-auto mt-3 flex justify-center gap-1.5">
+                <div class="h-4 w-12 rounded bg-white"></div>
+                <div class="h-4 w-10 rounded border border-white/20"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-5">
+          <p class="text-[11px] font-semibold uppercase tracking-wider text-sky-700">[Kategori]</p>
+          <h3 class="mt-1.5 font-bold">[Nama Item]</h3>
+          <p class="mt-1 text-sm text-slate-600">[Deskripsi singkat.]</p>
+        </div>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- KONTAK / CTA -->
-<section id="kontak" class="py-20 px-4 bg-slate-900 text-white text-center">
-  <h2 data-aos="fade-up" class="text-2xl sm:text-3xl font-bold">[Judul CTA Penutup]</h2>
-  <p data-aos="fade-up" data-aos-delay="100" class="mt-3 text-slate-300">[Ajakan singkat untuk kontak]</p>
-  <a data-aos="fade-up" data-aos-delay="200" href="#" class="mt-8 inline-block rounded-lg bg-sky-600 px-6 py-3 font-semibold hover:bg-sky-400">
-    [CTA Kontak — mis. Chat WhatsApp]
-  </a>
+<!-- ============================================================
+  CTA PENUTUP
+============================================================= -->
+<section id="kontak" class="relative isolate overflow-hidden bg-slate-950 px-4 py-24 sm:px-6">
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+    <div class="aurora absolute left-1/2 top-1/2 h-[320px] w-[720px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-sky-500/20 blur-[120px]"></div>
+  </div>
+
+  <div class="relative mx-auto max-w-2xl text-center">
+    <h2 data-aos="fade-up" class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">[Judul CTA penutup]</h2>
+    <p data-aos="fade-up" data-aos-delay="100" class="mt-4 text-slate-400">[Ajakan singkat, hilangkan keraguan terakhir.]</p>
+    <div data-aos="fade-up" data-aos-delay="200" class="mt-9">
+      <!-- Ganti nomor di link wa.me dengan nomor klien (format 62..., tanpa + dan tanpa spasi) -->
+      <a href="https://wa.me/62XXXXXXXXXXX?text=Halo%2C%20saya%20mau%20tanya"
+         class="inline-flex items-center gap-2.5 rounded-xl bg-white px-7 py-4 text-sm font-semibold text-slate-950 shadow-xl shadow-sky-500/10 transition-transform hover:scale-[1.02]">
+        <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.174.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.82 9.82 0 0 1 6.99 2.898 9.83 9.83 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.82 11.82 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.88 11.88 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.82 11.82 0 0 0-3.48-8.413" />
+        </svg>
+        [CTA Kontak]
+      </a>
+    </div>
+  </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="border-t border-slate-200 py-8 px-4 text-center text-sm text-slate-500">
-  © 2026 [BrandName]. Semua hak dilindungi.
+<!-- ============================================================
+  FOOTER
+============================================================= -->
+<footer class="border-t border-white/10 bg-slate-950 px-4 py-12 sm:px-6">
+  <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 sm:flex-row">
+    <a href="#" class="flex items-center gap-2.5 text-sm font-extrabold tracking-tight text-white">
+      <span class="grid h-7 w-7 place-items-center rounded-lg bg-gradient-to-br from-sky-400 to-indigo-500 text-xs font-black text-slate-950">[XX]</span>
+      [BrandName]
+    </a>
+    <div class="flex gap-7 text-sm text-slate-400">
+      <a href="#fitur" class="transition-colors hover:text-white">[Menu 1]</a>
+      <a href="#harga" class="transition-colors hover:text-white">[Menu 2]</a>
+      <a href="#galeri" class="transition-colors hover:text-white">[Menu 3]</a>
+    </div>
+    <p class="text-xs text-slate-600">© 2026 [BrandName]</p>
+  </div>
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>AOS.init({ duration: 700, once: true, easing: 'ease-out-cubic' });</script>
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  menuBtn.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('hidden') === false;
+    menuBtn.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  AOS.init({ duration: 700, once: true, easing: 'ease-out-cubic' });
+</script>
 </body>
 </html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Component: Mockups (CSS-only)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>body { font-family: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif; }</style>
+</head>
+<body class="bg-slate-100 p-8">
+
+<!--
+  ============================================================
+  KENAPA FILE INI ADA
+
+  Masalah paling mematikan di landing page klien baru: belum ada
+  screenshot/foto asli, jadi diisi kotak abu-abu "[ foto produk ]".
+  Calon klien lihat itu = langsung terbaca "belum ada kerjaan nyata".
+
+  Semua mockup di bawah ini digambar 100% pakai div + Tailwind —
+  nol file gambar, nol request tambahan, dan tetap terlihat seperti
+  produk sungguhan. Pakai ini sebagai pengisi sementara, lalu ganti
+  dengan <img> begitu screenshot asli sudah ada.
+  ============================================================
+-->
+
+<div class="mx-auto max-w-5xl space-y-12">
+
+  <!-- ================================================================
+    VARIAN 1: Browser mockup GELAP — untuk ditaruh di atas hero gelap
+  ================================================================= -->
+  <section>
+    <h2 class="mb-4 text-sm font-bold uppercase tracking-widest text-slate-500">1. Browser mockup (di hero gelap)</h2>
+
+    <div class="rounded-2xl bg-slate-950 p-10">
+      <div class="relative mx-auto max-w-3xl">
+        <!-- Glow di belakang mockup — ini yang bikin terasa "melayang" -->
+        <div aria-hidden="true" class="absolute -inset-x-6 -inset-y-4 rounded-[2rem] bg-gradient-to-r from-sky-500/20 via-indigo-500/20 to-sky-500/20 blur-2xl"></div>
+
+        <div class="relative overflow-hidden rounded-xl border border-white/10 bg-slate-900 shadow-2xl">
+          <!-- Title bar -->
+          <div class="flex items-center gap-2 border-b border-white/10 bg-white/[0.04] px-4 py-3">
+            <span class="h-2.5 w-2.5 rounded-full bg-red-400/60"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-amber-400/60"></span>
+            <span class="h-2.5 w-2.5 rounded-full bg-emerald-400/60"></span>
+            <div class="ml-2 flex h-6 max-w-[220px] flex-1 items-center rounded-md bg-white/5 px-2.5 text-[10px] font-medium text-slate-500">domain-klien.my.id</div>
+          </div>
+
+          <!-- Isi: mini landing page -->
+          <div class="bg-white p-4 text-left sm:p-6">
+            <div class="flex items-center justify-between border-b border-slate-100 pb-3.5">
+              <div class="h-2.5 w-20 rounded-full bg-slate-800"></div>
+              <div class="hidden gap-4 sm:flex">
+                <div class="h-2 w-10 rounded-full bg-slate-200"></div>
+                <div class="h-2 w-10 rounded-full bg-slate-200"></div>
+                <div class="h-2 w-10 rounded-full bg-slate-200"></div>
+              </div>
+              <div class="h-6 w-16 rounded-md bg-sky-600"></div>
+            </div>
+            <div class="py-7 text-center">
+              <div class="mx-auto h-3.5 w-3/5 rounded-full bg-slate-800"></div>
+              <div class="mx-auto mt-2.5 h-3.5 w-2/5 rounded-full bg-sky-600/80"></div>
+              <div class="mx-auto mt-4 h-2 w-1/2 rounded-full bg-slate-200"></div>
+              <div class="mt-5 flex justify-center gap-2">
+                <div class="h-7 w-24 rounded-lg bg-slate-900"></div>
+                <div class="h-7 w-20 rounded-lg border border-slate-200"></div>
+              </div>
+            </div>
+            <div class="grid grid-cols-3 gap-3">
+              <div class="rounded-lg border border-slate-100 p-3">
+                <div class="h-6 w-6 rounded-md bg-sky-100"></div>
+                <div class="mt-2.5 h-2 w-full rounded-full bg-slate-200"></div>
+                <div class="mt-1.5 h-2 w-2/3 rounded-full bg-slate-100"></div>
+              </div>
+              <div class="rounded-lg border border-slate-100 p-3">
+                <div class="h-6 w-6 rounded-md bg-indigo-100"></div>
+                <div class="mt-2.5 h-2 w-full rounded-full bg-slate-200"></div>
+                <div class="mt-1.5 h-2 w-2/3 rounded-full bg-slate-100"></div>
+              </div>
+              <div class="rounded-lg border border-slate-100 p-3">
+                <div class="h-6 w-6 rounded-md bg-emerald-100"></div>
+                <div class="mt-2.5 h-2 w-full rounded-full bg-slate-200"></div>
+                <div class="mt-1.5 h-2 w-2/3 rounded-full bg-slate-100"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================================================================
+    VARIAN 2: Thumbnail portofolio — 3 tipe halaman berbeda.
+    Kunci: bungkus semua dengan tinggi tetap (h-44) supaya kartu rata.
+  ================================================================= -->
+  <section>
+    <h2 class="mb-4 text-sm font-bold uppercase tracking-widest text-slate-500">2. Thumbnail portofolio (tinggi disamakan)</h2>
+
+    <div class="grid gap-6 md:grid-cols-3">
+
+      <!-- Tipe A: landing page gelap -->
+      <a href="#" class="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all hover:-translate-y-1 hover:shadow-xl">
+        <div class="h-44 overflow-hidden border-b border-slate-100 bg-slate-100 p-3">
+          <div class="h-full overflow-hidden rounded-lg bg-slate-950 shadow-sm">
+            <div class="flex gap-1 border-b border-white/10 px-2.5 py-2">
+              <span class="h-1.5 w-1.5 rounded-full bg-white/25"></span>
+              <span class="h-1.5 w-1.5 rounded-full bg-white/25"></span>
+              <span class="h-1.5 w-1.5 rounded-full bg-white/25"></span>
+            </div>
+            <div class="space-y-2 px-4 py-8 text-center">
+              <div class="mx-auto h-2 w-2/3 rounded-full bg-white/80"></div>
+              <div class="mx-auto h-2 w-1/2 rounded-full bg-sky-400"></div>
+              <div class="mx-auto mt-3 flex justify-center gap-1.5">
+                <div class="h-4 w-12 rounded bg-white"></div>
+                <div class="h-4 w-10 rounded border border-white/20"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-5">
+          <p class="text-[11px] font-semibold uppercase tracking-wider text-sky-700">Landing Page</p>
+          <h3 class="mt-1.5 font-bold">[Nama Project]</h3>
+          <p class="mt-1 text-sm text-slate-600">[Deskripsi singkat.]</p>
+        </div>
+      </a>
+
+      <!-- Tipe B: katalog / e-commerce (ganti amber-* dengan warna brand klien) -->
+      <a href="#" class="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all hover:-translate-y-1 hover:shadow-xl">
+        <div class="h-44 overflow-hidden border-b border-slate-100 bg-slate-100 p-3">
+          <div class="h-full overflow-hidden rounded-lg bg-amber-50 shadow-sm">
+            <div class="flex items-center justify-between border-b border-amber-200/60 bg-white px-2.5 py-2">
+              <div class="h-1.5 w-12 rounded-full bg-amber-700"></div>
+              <div class="h-3.5 w-9 rounded bg-amber-600"></div>
+            </div>
+            <div class="px-3 py-4">
+              <div class="mx-auto h-2 w-1/2 rounded-full bg-amber-900/80"></div>
+              <div class="mt-3 grid grid-cols-3 gap-1.5">
+                <div class="overflow-hidden rounded border border-amber-200/60 bg-white">
+                  <div class="h-6 bg-amber-200"></div>
+                  <div class="space-y-1 p-1.5">
+                    <div class="h-1 w-full rounded-full bg-amber-200"></div>
+                    <div class="h-1 w-2/3 rounded-full bg-amber-700"></div>
+                  </div>
+                </div>
+                <div class="overflow-hidden rounded border border-amber-200/60 bg-white">
+                  <div class="h-6 bg-amber-200"></div>
+                  <div class="space-y-1 p-1.5">
+                    <div class="h-1 w-full rounded-full bg-amber-200"></div>
+                    <div class="h-1 w-2/3 rounded-full bg-amber-700"></div>
+                  </div>
+                </div>
+                <div class="overflow-hidden rounded border border-amber-200/60 bg-white">
+                  <div class="h-6 bg-amber-200"></div>
+                  <div class="space-y-1 p-1.5">
+                    <div class="h-1 w-full rounded-full bg-amber-200"></div>
+                    <div class="h-1 w-2/3 rounded-full bg-amber-700"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-5">
+          <p class="text-[11px] font-semibold uppercase tracking-wider text-amber-700">Katalog</p>
+          <h3 class="mt-1.5 font-bold">[Nama Project]</h3>
+          <p class="mt-1 text-sm text-slate-600">[Deskripsi singkat.]</p>
+        </div>
+      </a>
+
+      <!-- Tipe C: dashboard / admin panel -->
+      <a href="#" class="group overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all hover:-translate-y-1 hover:shadow-xl">
+        <div class="h-44 overflow-hidden border-b border-slate-100 bg-slate-100 p-3">
+          <div class="h-full overflow-hidden rounded-lg bg-white shadow-sm ring-1 ring-emerald-100">
+            <div class="flex items-center justify-between border-b border-emerald-100 px-2.5 py-2">
+              <div class="h-1.5 w-14 rounded-full bg-emerald-700"></div>
+              <div class="h-1.5 w-8 rounded-full bg-slate-300"></div>
+            </div>
+            <div class="space-y-1.5 p-3">
+              <div class="grid grid-cols-3 gap-1.5">
+                <div class="rounded bg-emerald-50 p-1.5">
+                  <div class="h-1 w-2/3 rounded-full bg-emerald-200"></div>
+                  <div class="mt-1 h-1.5 w-full rounded-full bg-emerald-700"></div>
+                </div>
+                <div class="rounded bg-emerald-50 p-1.5">
+                  <div class="h-1 w-2/3 rounded-full bg-emerald-200"></div>
+                  <div class="mt-1 h-1.5 w-full rounded-full bg-emerald-700"></div>
+                </div>
+                <!-- Satu metrik dibikin merah = kesan data hidup, bukan dummy -->
+                <div class="rounded bg-emerald-50 p-1.5">
+                  <div class="h-1 w-2/3 rounded-full bg-emerald-200"></div>
+                  <div class="mt-1 h-1.5 w-full rounded-full bg-red-400"></div>
+                </div>
+              </div>
+              <div class="space-y-1 pt-1">
+                <div class="flex gap-1.5"><div class="h-1.5 flex-1 rounded-full bg-slate-200"></div><div class="h-1.5 w-8 rounded-full bg-slate-100"></div></div>
+                <div class="flex gap-1.5"><div class="h-1.5 flex-1 rounded-full bg-slate-200"></div><div class="h-1.5 w-8 rounded-full bg-slate-100"></div></div>
+                <div class="flex gap-1.5"><div class="h-1.5 flex-1 rounded-full bg-slate-200"></div><div class="h-1.5 w-8 rounded-full bg-slate-100"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="p-5">
+          <p class="text-[11px] font-semibold uppercase tracking-wider text-emerald-700">Admin Panel</p>
+          <h3 class="mt-1.5 font-bold">[Nama Project]</h3>
+          <p class="mt-1 text-sm text-slate-600">[Deskripsi singkat.]</p>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- ================================================================
+    VARIAN 3: Mockup HP — untuk menunjukkan tampilan mobile
+  ================================================================= -->
+  <section>
+    <h2 class="mb-4 text-sm font-bold uppercase tracking-widest text-slate-500">3. Mockup HP</h2>
+
+    <div class="flex justify-center rounded-2xl bg-slate-950 p-10">
+      <div class="w-56 overflow-hidden rounded-[2rem] border-4 border-slate-800 bg-white shadow-2xl">
+        <!-- Notch -->
+        <div class="flex justify-center bg-slate-950 pb-1.5 pt-2">
+          <div class="h-1.5 w-14 rounded-full bg-slate-700"></div>
+        </div>
+        <div class="p-3">
+          <div class="flex items-center justify-between">
+            <div class="h-2 w-12 rounded-full bg-slate-800"></div>
+            <div class="h-4 w-4 rounded bg-slate-200"></div>
+          </div>
+          <div class="mt-4 space-y-1.5 text-center">
+            <div class="mx-auto h-2.5 w-4/5 rounded-full bg-slate-800"></div>
+            <div class="mx-auto h-2.5 w-3/5 rounded-full bg-sky-600"></div>
+          </div>
+          <div class="mx-auto mt-3 h-6 w-24 rounded-lg bg-slate-900"></div>
+          <div class="mt-4 space-y-2">
+            <div class="rounded-lg border border-slate-100 p-2">
+              <div class="h-1.5 w-full rounded-full bg-slate-200"></div>
+              <div class="mt-1.5 h-1.5 w-2/3 rounded-full bg-slate-100"></div>
+            </div>
+            <div class="rounded-lg border border-slate-100 p-2">
+              <div class="h-1.5 w-full rounded-full bg-slate-200"></div>
+              <div class="mt-1.5 h-1.5 w-2/3 rounded-full bg-slate-100"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+</body>
+</html>
