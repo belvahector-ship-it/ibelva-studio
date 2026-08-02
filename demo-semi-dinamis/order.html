@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pesan — Kedai Kopi Lokal</title>
+<script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-amber-50 text-slate-900">
+
+<nav class="bg-white border-b border-amber-100">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+    <a href="index.html" class="text-lg font-bold text-amber-700">☕ Kedai Kopi Lokal</a>
+    <a href="index.html" class="text-sm font-medium text-slate-600 hover:text-amber-700">← Kembali ke Menu</a>
+  </div>
+</nav>
+
+<section class="py-16 px-4 text-center">
+  <h1 class="text-3xl font-extrabold">Form Pesanan</h1>
+  <p class="mt-3 text-slate-600 max-w-lg mx-auto">
+    Form ini adalah Google Form yang di-embed — semua pesanan otomatis masuk ke Google Sheet,
+    bisa dipantau langsung dari HP pemilik kedai tanpa perlu admin panel/database terpisah.
+  </p>
+</section>
+
+<section class="px-4 pb-20">
+  <div class="max-w-2xl mx-auto bg-white rounded-2xl border border-amber-100 overflow-hidden shadow-sm">
+    <!--
+      GANTI src di bawah ini dengan link embed Google Form asli:
+      Google Form → Send → tab "<>" (embed) → copy src dari <iframe>
+    -->
+    <iframe
+      src="https://docs.google.com/forms/d/e/PLACEHOLDER_FORM_ID/viewform?embedded=true"
+      width="100%" height="900" frameborder="0" marginheight="0" marginwidth="0" loading="lazy">
+      Memuat form…
+    </iframe>
+  </div>
+  <p class="max-w-2xl mx-auto mt-4 text-xs text-slate-400 text-center">
+    Belum terhubung ke Google Form asli — lihat README.md untuk cara setup.
+  </p>
+</section>
+
+</body>
+</html>

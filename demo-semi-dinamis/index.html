@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kedai Kopi Lokal — Menu & Katalog</title>
+<meta name="description" content="Menu Kedai Kopi Lokal, update otomatis dari Google Sheet — contoh demo Paket Semi Dinamis iBelva Studio.">
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-amber-50 text-slate-900">
+
+<nav class="bg-white border-b border-amber-100">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+    <a href="#" class="text-lg font-bold text-amber-700">☕ Kedai Kopi Lokal</a>
+    <a href="order.html" class="inline-flex items-center rounded-lg bg-amber-600 px-4 py-2 text-sm font-semibold text-white hover:bg-amber-700">
+      Pesan Sekarang
+    </a>
+  </div>
+</nav>
+
+<section class="py-16 px-4 text-center">
+  <span class="inline-block rounded-full bg-amber-100 text-amber-700 text-xs font-semibold px-3 py-1 mb-4">
+    Demo Paket Semi Dinamis — iBelva Studio
+  </span>
+  <h1 data-aos="fade-up" class="text-3xl sm:text-4xl font-extrabold max-w-xl mx-auto">Menu Hari Ini</h1>
+  <p data-aos="fade-up" data-aos-delay="100" class="mt-3 text-slate-600 max-w-lg mx-auto">
+    Menu di bawah ini otomatis narik data dari Google Sheet — kalau pemilik kedai ubah harga atau
+    nambah menu di Sheet, halaman ini ikut update tanpa perlu sentuh kode sama sekali.
+  </p>
+</section>
+
+<section class="px-4 pb-20">
+  <div id="catalog-status" class="max-w-5xl mx-auto text-center text-sm text-slate-500 mb-6"></div>
+  <div id="catalog-grid" class="grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-5xl mx-auto"></div>
+</section>
+
+<footer class="border-t border-amber-100 py-8 px-4 text-center text-sm text-slate-500 bg-white">
+  Dibuatkan oleh <a href="../demo-statis/index.html" class="text-amber-700 font-semibold hover:underline">iBelva Studio</a> — Paket Semi Dinamis
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init({ duration: 700, once: true });</script>
+<script src="assets/js/catalog.js"></script>
+</body>
+</html>

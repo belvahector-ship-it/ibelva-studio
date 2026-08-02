@@ -1,0 +1,4 @@
+/* Custom overrides di luar Tailwind utility, kalau perlu */
+html {
+  scroll-behavior: smooth;
+}

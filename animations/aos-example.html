@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animation: AOS Example</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-white">
+
+<section class="py-24 px-4 text-center">
+  <h1 data-aos="fade-up" class="text-4xl font-extrabold text-slate-900">Fade Up</h1>
+  <p data-aos="fade-up" data-aos-delay="150" class="mt-3 text-slate-600">Muncul dari bawah dengan sedikit delay</p>
+</section>
+
+<section class="py-24 px-4 grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+  <div data-aos="fade-right" class="rounded-xl bg-slate-100 p-6 text-center">fade-right</div>
+  <div data-aos="zoom-in" class="rounded-xl bg-slate-100 p-6 text-center">zoom-in</div>
+  <div data-aos="fade-left" class="rounded-xl bg-slate-100 p-6 text-center">fade-left</div>
+</section>
+
+<section class="py-24 px-4 text-center">
+  <div data-aos="fade-up" class="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto">
+    <!-- data-aos-delay berjenjang untuk efek stagger tanpa GSAP -->
+    <div data-aos="fade-up" data-aos-delay="0" class="rounded-xl bg-indigo-50 p-6">Kartu 1</div>
+    <div data-aos="fade-up" data-aos-delay="100" class="rounded-xl bg-indigo-50 p-6">Kartu 2</div>
+    <div data-aos="fade-up" data-aos-delay="200" class="rounded-xl bg-indigo-50 p-6">Kartu 3</div>
+  </div>
+</section>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 700, once: true, easing: 'ease-out-cubic' });
+</script>
+</body>
+</html>

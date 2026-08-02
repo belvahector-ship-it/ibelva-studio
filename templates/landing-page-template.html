@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>[BrandName] — [Tagline]</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
+<body class="bg-white text-slate-900">
+
+<!-- NAVBAR -->
+<nav class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-slate-100">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+    <a href="#" class="text-lg font-bold text-indigo-600">[BrandName]</a>
+    <div class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+      <a href="#layanan" class="hover:text-indigo-600">Layanan</a>
+      <a href="#portofolio" class="hover:text-indigo-600">Portofolio</a>
+      <a href="#kontak" class="hover:text-indigo-600">Kontak</a>
+    </div>
+    <a href="#kontak" class="inline-flex items-center rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">
+      Hubungi Kami
+    </a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="py-24 px-4 text-center bg-gradient-to-b from-indigo-50 to-white">
+  <h1 data-aos="fade-up" class="text-4xl sm:text-5xl font-extrabold max-w-2xl mx-auto leading-tight">
+    [Tagline Utama]
+  </h1>
+  <p data-aos="fade-up" data-aos-delay="100" class="mt-4 text-slate-600 max-w-xl mx-auto">
+    [Deskripsi singkat 1-2 kalimat tentang value proposition]
+  </p>
+  <div data-aos="fade-up" data-aos-delay="200" class="mt-8 flex items-center justify-center gap-4">
+    <a href="#kontak" class="rounded-lg bg-indigo-600 px-6 py-3 text-white font-semibold hover:bg-indigo-700">[CTA Utama]</a>
+    <a href="#layanan" class="rounded-lg border border-slate-300 px-6 py-3 text-slate-700 font-semibold hover:bg-slate-50">[CTA Sekunder]</a>
+  </div>
+</section>
+
+<!-- LAYANAN / FITUR -->
+<section id="layanan" class="py-20 px-4">
+  <h2 data-aos="fade-up" class="text-2xl sm:text-3xl font-bold text-center">[Judul Section Layanan]</h2>
+  <div class="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+    <div data-aos="fade-up" data-aos-delay="0" class="rounded-xl bg-white p-6 shadow-sm border border-slate-100">
+      <div class="h-10 w-10 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">1</div>
+      <h3 class="mt-4 font-semibold">[Fitur 1]</h3>
+      <p class="mt-2 text-sm text-slate-600">[Deskripsi fitur 1]</p>
+    </div>
+    <div data-aos="fade-up" data-aos-delay="100" class="rounded-xl bg-white p-6 shadow-sm border border-slate-100">
+      <div class="h-10 w-10 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">2</div>
+      <h3 class="mt-4 font-semibold">[Fitur 2]</h3>
+      <p class="mt-2 text-sm text-slate-600">[Deskripsi fitur 2]</p>
+    </div>
+    <div data-aos="fade-up" data-aos-delay="200" class="rounded-xl bg-white p-6 shadow-sm border border-slate-100">
+      <div class="h-10 w-10 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600 font-bold">3</div>
+      <h3 class="mt-4 font-semibold">[Fitur 3]</h3>
+      <p class="mt-2 text-sm text-slate-600">[Deskripsi fitur 3]</p>
+    </div>
+  </div>
+</section>
+
+<!-- PORTOFOLIO -->
+<section id="portofolio" class="py-20 px-4 bg-slate-50">
+  <h2 data-aos="fade-up" class="text-2xl sm:text-3xl font-bold text-center">[Judul Section Portofolio]</h2>
+  <div class="mt-12 grid sm:grid-cols-2 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+    <div data-aos="zoom-in" class="rounded-xl bg-white overflow-hidden shadow-sm border border-slate-100">
+      <div class="aspect-video bg-slate-100 flex items-center justify-center text-slate-400 text-sm">[Screenshot Project 1]</div>
+      <div class="p-4"><p class="font-semibold text-sm">[Nama Project 1]</p></div>
+    </div>
+    <div data-aos="zoom-in" data-aos-delay="100" class="rounded-xl bg-white overflow-hidden shadow-sm border border-slate-100">
+      <div class="aspect-video bg-slate-100 flex items-center justify-center text-slate-400 text-sm">[Screenshot Project 2]</div>
+      <div class="p-4"><p class="font-semibold text-sm">[Nama Project 2]</p></div>
+    </div>
+    <div data-aos="zoom-in" data-aos-delay="200" class="rounded-xl bg-white overflow-hidden shadow-sm border border-slate-100">
+      <div class="aspect-video bg-slate-100 flex items-center justify-center text-slate-400 text-sm">[Screenshot Project 3]</div>
+      <div class="p-4"><p class="font-semibold text-sm">[Nama Project 3]</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- KONTAK / CTA -->
+<section id="kontak" class="py-20 px-4 bg-slate-900 text-white text-center">
+  <h2 data-aos="fade-up" class="text-2xl sm:text-3xl font-bold">[Judul CTA Penutup]</h2>
+  <p data-aos="fade-up" data-aos-delay="100" class="mt-3 text-slate-300">[Ajakan singkat untuk kontak]</p>
+  <a data-aos="fade-up" data-aos-delay="200" href="#" class="mt-8 inline-block rounded-lg bg-indigo-500 px-6 py-3 font-semibold hover:bg-indigo-400">
+    [CTA Kontak — mis. Chat WhatsApp]
+  </a>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-slate-200 py-8 px-4 text-center text-sm text-slate-500">
+  © 2026 [BrandName]. Semua hak dilindungi.
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init({ duration: 700, once: true, easing: 'ease-out-cubic' });</script>
+</body>
+</html>
