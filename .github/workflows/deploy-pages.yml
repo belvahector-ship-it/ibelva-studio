@@ -43,6 +43,7 @@ jobs:
           cp index.html _site/
           cp -r demo-statis _site/
           cp -r demo-semi-dinamis _site/
+          cp -r galeri-referensi _site/
           mkdir -p _site/demo-fullstack
           cp -r demo-fullstack/dist/. _site/demo-fullstack/
 

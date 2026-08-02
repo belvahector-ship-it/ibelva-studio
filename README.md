@@ -17,6 +17,7 @@ Google Form/Sheet, CDN (Tailwind, AOS, GSAP).
 ├── demo-statis/         # Demo Paket 1 — landing page company profile (iBelva Studio sendiri)
 ├── demo-semi-dinamis/   # Demo Paket 2 — katalog + integrasi Google Form/Sheet
 ├── demo-fullstack/      # Demo Paket 3 — Full Stack + Supabase DB + Admin Panel
+├── galeri-referensi/    # 3 contoh gaya UI pihak ketiga (MIT), bukan portofolio klien
 └── docs/                # Catatan proses kerja (sistem katalog organik, dsb)
 ```
 
@@ -46,6 +47,14 @@ accent `sky-700`, font Plus Jakarta Sans) — di-generate dengan skill
 [ui-ux-pro-max](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill). Detail lengkap palet & cara
 extend: [`docs/design-tokens.md`](docs/design-tokens.md). Dua demo klien (`demo-semi-dinamis`,
 `demo-fullstack`) sengaja punya tema sendiri-sendiri — lihat alasannya di file yang sama.
+
+## Galeri Referensi Desain
+
+[`galeri-referensi/`](galeri-referensi) berisi 3 contoh gaya UI (SaaS terang, portfolio gelap,
+dashboard healthcare) dari [`nextlevelbuilder/ui-ux-pro-max-skill`](https://github.com/nextlevelbuilder/ui-ux-pro-max-skill)
+(Lisensi MIT) — dipajang di situs live sebagai bahan diskusi arah desain dengan calon klien, **bukan**
+hasil kerja iBelva Studio. Tiap halaman diberi banner & komentar atribusi yang jelas. Detail:
+[`galeri-referensi/README.md`](galeri-referensi/README.md).
 
 ## Stack per Demo
 
